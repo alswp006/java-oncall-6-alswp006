@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -20,6 +21,19 @@ public class InputTest extends NsTest {
                     .filter(s -> s.contains("[ERROR]"))
                     .count();
             assertEquals(6, countErrorMessage);
+        });
+    }
+
+    @DisplayName("평일과 휴일 다른 멤버 입력에 대한 출력 확인")
+    @Test
+    void inputDateTest() {
+        assertSimpleTest(() -> {
+            run("1,월",
+                    "민제,성현,정환,찬욱,민혁",
+                    "민제,성현,정환,이원,민혁",
+                    "민제,성현,정환,찬욱,민혁",
+                    "민혁,찬욱,민제,성현,정환");
+            assertThat(output()).contains("[ERROR]");
         });
     }
 
