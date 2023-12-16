@@ -12,7 +12,7 @@ public class CrewsValidator implements Validator{
     private final int MIN_CREW_RANGE = 5;
     private final int MAX_CREW_RANGE = 35;
     private final int MIN_CREW_NAME_RANGE = 1;
-    private final int MIN_CREW_NAME_RANGE = 5;
+    private final int MAX_CREW_NAME_RANGE = 5;
 
     private CrewsValidator() {
     }
@@ -37,7 +37,7 @@ public class CrewsValidator implements Validator{
 
     private void checkCrewsNameRange(List<String> crewsName){
         crewsName.forEach(name -> {
-            if (name.length() < MIN_CREW_NAME_RANGE || name.length() > MAX_CREW_RANGE){
+            if (name.length() < MIN_CREW_NAME_RANGE || name.length() > MAX_CREW_NAME_RANGE){
                 Error.throwError("유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
             }
         });
