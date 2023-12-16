@@ -1,4 +1,5 @@
 package oncall.view.validator;
 
-public class Validator {
+public interface Validator {
+    void validate(String input);
 }
