@@ -2,16 +2,18 @@ package oncall.view.validator;
 
 import oncall.util.Error;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MonthAndWeekValidator implements Validator{
+public class MonthAndWeekValidator implements Validator {
     private static final MonthAndWeekValidator MONTH_AND_WEEK_VALIDATOR = new MonthAndWeekValidator();
 
     private MonthAndWeekValidator() {
     }
-    public static MonthAndWeekValidator getInstance(){return MONTH_AND_WEEK_VALIDATOR;}
+
+    public static MonthAndWeekValidator getInstance() {
+        return MONTH_AND_WEEK_VALIDATOR;
+    }
 
     List<String> weekData = Arrays.asList("월", "화", "수", "목", "금", "토", "일");
 
@@ -25,32 +27,33 @@ public class MonthAndWeekValidator implements Validator{
         checkWeek(week);
     }
 
-    private void checkMonth(String month){
+    private void checkMonth(String month) {
         checkMonthType(month);
         checkMonthRange(month);
     }
-    private void checkWeek(String week){
+
+    private void checkWeek(String week) {
         checkWeekData(week);
     }
 
-    private void checkMonthType(String month){
-        try{
+    private void checkMonthType(String month) {
+        try {
             Integer.parseInt(month);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Error.throwError("유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
         }
     }
 
-    private void checkMonthRange(String month){
+    private void checkMonthRange(String month) {
         int monthData = Integer.parseInt(month);
 
-        if (monthData < 1 || monthData > 12){
+        if (monthData < 1 || monthData > 12) {
             Error.throwError("유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
         }
     }
 
-    private void checkWeekData(String week){
-        if (!weekData.contains(week)){
+    private void checkWeekData(String week) {
+        if (!weekData.contains(week)) {
             Error.throwError("유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
         }
     }

@@ -3,7 +3,6 @@ package oncall.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public enum Date {
     JANUARY(1, 31, List.of(1)),
@@ -47,14 +46,14 @@ public enum Date {
     }
 
 
-    public static List<Integer> getDayOffofMonth(int month){
+    public static List<Integer> getDayOffofMonth(int month) {
         Date date = Arrays.stream(Date.values())
                 .filter(menus -> menus.getMonth() == (month))
                 .findFirst()
                 .orElseThrow();
         List<Integer> dayOffOfMonth = new ArrayList<>(date.dayOff);
 
-        if (dayOffOfMonth.get(0) == 0){
+        if (dayOffOfMonth.get(0) == 0) {
             dayOffOfMonth.clear();
         }
 
