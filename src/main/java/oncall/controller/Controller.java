@@ -1,5 +1,6 @@
 package oncall.controller;
 
+import oncall.model.Crews;
 import oncall.model.MatchCrews;
 import oncall.model.Date;
 import oncall.model.Week;
@@ -26,7 +27,7 @@ public class Controller {
         List<Integer> dayOff = Date.getDayOffofMonth(month);
 
         // MatchCrews, Crews, MatchCrewsRepo 객체 생성
-        MatchCrews crew = new MatchCrews(weekDayCrews, dayOffCrews);
+        MatchCrews crew = new MatchCrews(new Crews(weekDayCrews), new Crews(dayOffCrews));
         List<String> crews = crew.getMatchCrews(dayOfMonth, dayOff, weekEnd);
         List<String> monthOfWeekData = week.getMonthOfWeek(startWeek);
 
