@@ -7,10 +7,10 @@ public class MatchCrews {
     Crews weekDayCrews;
     Crews dayOffCrews;
 
-    public MatchCrews(List<String> weekDayCrews, List<String> dayOffCrews){
+    public MatchCrews(Crews weekDayCrews, Crews dayOffCrews){
         this.matchCrews = new MatchCrewsRepo();
-        this.weekDayCrews = new Crews(weekDayCrews);
-        this.dayOffCrews = new Crews(dayOffCrews);
+        this.weekDayCrews = weekDayCrews;
+        this.dayOffCrews = dayOffCrews;
     }
 
     public List<String> getMatchCrews(int dayOfMonth, List<Integer> dayOff, List<Integer> weekEnd){
