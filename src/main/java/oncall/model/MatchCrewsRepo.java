@@ -6,9 +6,6 @@ import java.util.List;
 public class MatchCrewsRepo {
     private final List<String> matchCrews = new ArrayList<>();
 
-    MatchCrewsRepo(){
-    }
-
     public void add(String crew){
         this.matchCrews.add(crew);
     }
