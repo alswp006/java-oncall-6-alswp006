@@ -19,12 +19,20 @@ public class MonthAndWeekValidator implements Validator {
 
     @Override
     public void validate(String input) {
+        checkInputSize(input);
+
         String[] monthAndWeek = input.split(",");
         String month = monthAndWeek[0];
         String week = monthAndWeek[1];
 
         checkMonth(month);
         checkWeek(week);
+    }
+
+    private void checkInputSize(String input){
+        if (Arrays.stream(input.split(",")).toList().size() != 2){
+            Error.throwError("유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
+        }
     }
 
     private void checkMonth(String month) {
