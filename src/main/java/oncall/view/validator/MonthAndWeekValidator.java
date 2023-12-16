@@ -50,7 +50,7 @@ public class MonthAndWeekValidator implements Validator{
     }
 
     private void checkWeekData(String week){
-        if (weekData.contains(week)){
+        if (!weekData.contains(week)){
             Error.throwError("유효하지 않은 입력 값입니다. 다시 입력해 주세요.");
         }
     }
