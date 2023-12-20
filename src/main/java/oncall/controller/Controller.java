@@ -1,5 +1,8 @@
 package oncall.controller;
 
+import oncall.model.CrewRepo;
+import oncall.model.DayOffCrew;
+import oncall.model.WeekDayCrew;
 import oncall.view.InputView;
 import oncall.view.OutputView;
 
@@ -13,15 +16,17 @@ public class Controller {
     public void run(){
         String[] monthAndWeek = inputView.inputMonthWeek();
         System.out.println(Arrays.toString(monthAndWeek));
-        List<String> weekDayCrews;
-        List<String> dayOffCrews;
+        WeekDayCrew weekDayCrew = WeekDayCrew.getInstance();
+        DayOffCrew dayOffCrew = DayOffCrew.getInstance();
+        CrewRepo crewRepo = new CrewRepo(weekDayCrew, dayOffCrew);
 
         while(true){
             try{
-                weekDayCrews = inputView.inputCrews("평일");
-                dayOffCrews = inputView.inputCrews("휴일");
-                System.out.println(weekDayCrews);
-                System.out.println(dayOffCrews);
+                List<String> weekDayCrews = inputView.inputCrews("평일");
+                List<String> dayOffCrews = inputView.inputCrews("휴일");
+
+                weekDayCrew.setWeekDayCrews(weekDayCrews);
+                dayOffCrew.setDayOffCrew(dayOffCrews);
             }catch (IllegalArgumentException ignored){}
         }
 
