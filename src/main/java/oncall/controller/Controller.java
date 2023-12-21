@@ -3,9 +3,6 @@ package oncall.controller;
 import oncall.model.*;
 import oncall.view.InputView;
 import oncall.view.OutputView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Controller {

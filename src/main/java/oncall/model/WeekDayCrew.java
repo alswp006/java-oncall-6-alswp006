@@ -3,7 +3,7 @@ package oncall.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeekDayCrew extends Crew{
+public class WeekDayCrew implements Crew{
     private List<String> weekDayCrews = new ArrayList<>();
     private static final WeekDayCrew WEEK_DAY_CREW = new WeekDayCrew();
     private WeekDayCrew(){}

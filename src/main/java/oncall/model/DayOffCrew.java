@@ -3,7 +3,7 @@ package oncall.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DayOffCrew extends Crew{
+public class DayOffCrew implements Crew{
     List<String> dayOffCrew = new ArrayList<>();
     private static final DayOffCrew DAY_OFF_CREW = new DayOffCrew();
 
