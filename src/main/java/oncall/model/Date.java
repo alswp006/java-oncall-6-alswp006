@@ -44,4 +44,24 @@ public enum Date {
 
         return date.getDay();
     }
+
+    public static List<Integer> getDayOffofMonth(int month, List<Integer> weekEnd) {
+        Date date = Arrays.stream(Date.values())
+                .filter(menus -> menus.getMonth() == (month))
+                .findFirst()
+                .orElseThrow();
+        List<Integer> dayOffOfMonth = new ArrayList<>(date.dayOff);
+
+        if (dayOffOfMonth.get(0) == 0) {
+            dayOffOfMonth.clear();
+        }
+
+        dayOffOfMonth.forEach(day -> {
+            if (weekEnd.contains(day)) {
+                dayOffOfMonth.remove(day);
+            }
+        });
+
+        return dayOffOfMonth;
+    }
 }

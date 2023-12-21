@@ -14,14 +14,14 @@ public class DayOffCrew extends Crew{
     }
 
     public void setDayOffCrew(List<String> dayOffCrew){
-        this.dayOffCrew = dayOffCrew;
+        this.dayOffCrew.addAll(dayOffCrew);
     }
 
     @Override
-    protected List<String> getCrewName() {
+    public String getCrewName() {
         String crewName = this.dayOffCrew.remove(0);
         this.dayOffCrew.add(crewName);
 
-        return dayOffCrew;
+        return crewName;
     }
 }

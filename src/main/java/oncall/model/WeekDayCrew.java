@@ -13,14 +13,14 @@ public class WeekDayCrew extends Crew{
     }
 
     public void setWeekDayCrews(List<String> weekDayCrews){
-        this.weekDayCrews = weekDayCrews;
+        this.weekDayCrews.addAll(weekDayCrews);
     }
 
     @Override
-    protected List<String> getCrewName() {
+    public String getCrewName() {
         String crewName = this.weekDayCrews.remove(0);
         this.weekDayCrews.add(crewName);
 
-        return weekDayCrews;
+        return crewName;
     }
 }
