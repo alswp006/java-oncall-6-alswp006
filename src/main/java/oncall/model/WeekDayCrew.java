@@ -5,12 +5,6 @@ import java.util.List;
 
 public class WeekDayCrew implements Crew{
     private List<String> weekDayCrews = new ArrayList<>();
-    private static final WeekDayCrew WEEK_DAY_CREW = new WeekDayCrew();
-    private WeekDayCrew(){}
-
-    public static WeekDayCrew getInstance(){
-        return WEEK_DAY_CREW;
-    }
 
     public void setWeekDayCrews(List<String> weekDayCrews){
         this.weekDayCrews.addAll(weekDayCrews);

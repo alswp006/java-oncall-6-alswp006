@@ -8,14 +8,14 @@ import java.util.List;
 public class Controller {
     InputView inputView = InputView.getInstance();
     OutputView outputView = OutputView.getInstance();
-    Week weekData = new Week();
-    WeekDayCrew weekDayCrew = WeekDayCrew.getInstance();
-    DayOffCrew dayOffCrew = DayOffCrew.getInstance();
-    CrewRepo crewRepo = new CrewRepo(weekDayCrew, dayOffCrew);
 
     public void run(){
+        Week weekData = new Week();
+        WeekDayCrew weekDayCrew = new WeekDayCrew();
+        DayOffCrew dayOffCrew = new DayOffCrew();
+        CrewRepo crewRepo = new CrewRepo(weekDayCrew, dayOffCrew);
         String[] monthAndWeek = inputView.inputMonthWeek();
-        setCrews();
+        setCrews(weekDayCrew, dayOffCrew);
 
         int month = Integer.parseInt(monthAndWeek[0]);
         String startWeek = monthAndWeek[1];
@@ -28,7 +28,7 @@ public class Controller {
         outputView.printResult(weeks, crewNames, dayOff);
     }
 
-    private void setCrews(){
+    private void setCrews(WeekDayCrew weekDayCrew, DayOffCrew dayOffCrew){
         while(true){
             try{
                 List<String> weekDayCrews = inputView.inputCrews("평일");
